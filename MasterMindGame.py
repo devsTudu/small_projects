@@ -16,6 +16,7 @@ class Game:
         self.digit = None
         self.score = score
 
+
     def play(self):
         clear()
         print("Lets start the game, your current score %f" % self.score)
