@@ -4,6 +4,12 @@ import os
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+rule = """The Rules are as follows
+1. For a number of digits the computer will guess a number
+2. If correctly guessed, you will get score (10 * #total_digits)
+3. If partly correct, you will get score (10 * (#correct_digits/#total_digits))
+4. Otherwise -1, when all digits are wrong"""
+
 class Game:
     def __init__(self, score=0):
         self.guesses = None
@@ -13,7 +19,7 @@ class Game:
     def play(self):
         clear()
         print("Lets start the game, your current score %f" % self.score)
-        self.rules()
+        print(rule)
         self.set_digit()
         random_num = random.randint(10 ** (self.digit - 1), 10 ** self.digit - 1)
         print("I have decided a number, you can guess now:")
@@ -86,15 +92,6 @@ class Game:
                     correct_digits += 1
             return correct_digits / len(guess_num), correct
 
-    @staticmethod
-    def rules():
-        rule = """
-        The Rules are as follows
-        1. For a number of digits the computer will guess a number
-        2. If correctly guessed, you will get score (10 * #total_digits)
-        3. If partly correct, you will get score (10 * (#correct_digits/#total_digits))
-        4. Otherwise -1, when all digits are wrong"""
-        print(rule)
 
 def main():
     game = Game()
